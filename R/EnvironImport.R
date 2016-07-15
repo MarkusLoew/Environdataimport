@@ -1,7 +1,7 @@
 #' Import a weather station file created by an Environdata weather station
 #' 
 #' @param file Filename of the csv file.
-#' @return List with three name elements: Data with the actual data as data.frame, Parameter names and Units for each parameter. Grand totals, means etc provided nthe Evirondata file are currently discarded.
+#' @return List with three name elements: Data with the actual data as data.frame, Parameter names and Units for each parameter. Grand totals, means etc provided in the Environdata file are currently discarded.
 #' @examples 
 #' \dontrun{
 #' EnvironImport(myfile.csv)
