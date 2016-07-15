@@ -17,7 +17,7 @@ The import functions returns a list with three items: data, parameters, units.
 Installation straight from github (if package "devtools" is already installed) via
 
 ```{r}
-install_github("MarkusLoew/Environdataimport")
+devtools::install_github("MarkusLoew/Environdataimport")
 ```
 
 ### Example session
