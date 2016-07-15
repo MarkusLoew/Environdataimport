@@ -7,7 +7,7 @@
 #' weather <- EnvironImport(myfile.csv)
 #' head(weather$Data)
 #' weather$Parameters
-#' 'weather$Units
+#' weather$Units
 #' }
 
 EnvironImport <- function(file) {
