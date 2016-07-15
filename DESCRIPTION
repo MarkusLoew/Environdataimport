@@ -1,11 +1,11 @@
 Package: Environdataimport
 Title: Imports weather data measured by Environdata weather stations
-Version: 0.0.1.0000
+Version: 1.0.1.0000
 Authors@R: person("Markus", "Loew", email = "m.loew@unimelb.edu.au", role = c("aut", "cre"))
 Description: This package imports a csv with weather data from an Environdata
     weather station.
 Depends:
-    R (>= 3.3.1)
+    R (>= 3.0.0)
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
