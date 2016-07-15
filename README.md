@@ -6,7 +6,7 @@ R package to import files created by an Environdata weather station http://envir
 
 See 
 
-	help(package = "Environdataimport"") 
+	help(package = "Environdataimport") 
 
 for details on the function provided by this package.
 The import functions returns a list with three items: data, parameters, units.
