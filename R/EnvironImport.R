@@ -4,7 +4,10 @@
 #' @return List with three name elements: Data with the actual data as data.frame, Parameter names and Units for each parameter. Grand totals, means etc provided in the Environdata file are currently discarded.
 #' @examples 
 #' \dontrun{
-#' EnvironImport(myfile.csv)
+#' weather <- EnvironImport(myfile.csv)
+#' head(weather$Data)
+#' weather$Parameters
+#' 'weather$Units
 #' }
 
 EnvironImport <- function(file) {
@@ -30,9 +33,16 @@ EnvironImport <- function(file) {
    # Remove units from names
    the.names <- unlist(lapply(strsplit(as.character(the.names), "\\["), "[", 1))
    
-   # There are two un-named columns in the file: Date, and Time
+   # There are two columns in the file that are not reflected in the parameter names: 
+   # Date, and Time
    unnamed <- c("Date", "Time")
    the.names <- c(unnamed, the.names)
+   the.units <- c(unnamed, the.units)
+   
+   # the hourly data file has duplicated parameter names
+   # finding those and renaming them to avoid conflicts
+   dups <- duplicated(the.names)
+   the.names[dups == TRUE] <- paste(the.names[dups == TRUE], "1", sep = ".")
    
    # the data start after the last row with the word "Total"
    my.rows <- grepl("Total", headers)
@@ -64,9 +74,18 @@ EnvironImport <- function(file) {
    # convert time and date to POSIX
    my.time <- paste(the.data$Date, the.data$Time, sep = " ")
    the.data$Datetime <- as.POSIXct(my.time, format = "%d/%m/%Y %H:%M:%S")
-     
+
+   #update parameter names and units to reflect the new parameter "Datetime"
+   the.names <- c("Datetime", the.names)
+   the.units <- c("Datetime", the.units)
+   
    # reorder columns
-   the.data <- the.data[, c("Datetime", the.names)]
+   df.names <- names(the.data)
+
+   the.data <- the.data[, c("Datetime", df.names)]
+   
+   # in case there are duplicates, the additional Datetime parameter gets deleted.
+   the.data$Datetime.1 <- NULL
    
    # assemble output
    # list of data, Names, units

@@ -15,9 +15,4 @@ List with three name elements: Data with the actual data as data.frame, Paramete
 \description{
 Import a weather station file created by an Environdata weather station
 }
-\examples{
-\dontrun{
-EnvironImport(myfile.csv)
-}
-}
 
