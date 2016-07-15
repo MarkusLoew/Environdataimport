@@ -1,6 +1,6 @@
 # Environdataimport
 
-R package to imports files created by an Environdata weather station http://environdata.com.au/
+R package to import files created by an Environdata weather station http://environdata.com.au/
 
 See 
 
