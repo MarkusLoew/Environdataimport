@@ -15,4 +15,12 @@ List with three name elements: Data with the actual data as data.frame, Paramete
 \description{
 Import a weather station file created by an Environdata weather station
 }
+\examples{
+\dontrun{
+weather <- EnvironImport(myfile.csv)
+head(weather$Data)
+weather$Parameters
+weather$Units
+}
+}
 
