@@ -40,6 +40,12 @@ length(weather)
 names(weather)
 [1] "Data"       "Parameters" "Units" 
 
+class(weather$Data)
+[1] "data.frame"
+
+class(weather$Parameters)
+[1] "character"
+
 head(weather$Data)
              Datetime       Date     Time Maximum Wind Speed  Average Wind Speed  Standard Deviation Wind Speed  Average Wind Direction  Yamartino Calculation Wind Direction  Maximum Peak Wind Gust 
 1 2016-01-01 09:00:00 01/01/2016 09:00:00               26.75                7.45                           4.59                  219.96                                 85.40                      48
