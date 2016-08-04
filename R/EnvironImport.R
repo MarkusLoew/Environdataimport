@@ -69,13 +69,16 @@ EnvironImport <- function(file) {
                                header = F, 
                                skip = start.of.data, 
                                nrows = my.end)
+   
+   # remove trailing spaces from names
+   the.names <- gsub(" $", "", the.names)
    names(the.data) <- the.names
       
    # convert time and date to POSIX
    my.time <- paste(the.data$Date, the.data$Time, sep = " ")
    the.data$Datetime <- as.POSIXct(my.time, format = "%d/%m/%Y %H:%M:%S")
 
-   #update parameter names and units to reflect the new parameter "Datetime"
+   # update parameter names and units to reflect the new parameter "Datetime"
    the.names <- c("Datetime", the.names)
    the.units <- c("Datetime", the.units)
    
@@ -86,6 +89,11 @@ EnvironImport <- function(file) {
    
    # in case there are duplicates, the additional Datetime parameter gets deleted.
    the.data$Datetime.1 <- NULL
+
+   # rename parameter names to avoid spaces and special symbols
+   # actual parameter names from the original file are available in "the.names"
+   names(the.data) <- gsub("\\.", "", names(the.data))
+   names(the.data) <- gsub(" ", "_", names(the.data))
    
    # assemble output
    # list of data, Names, units
